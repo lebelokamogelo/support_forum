@@ -5,11 +5,15 @@
 
 <div class="content md:flex justify-between ">
     <div class="content-menu md:w-60">{% include 'forum/submenu.html' %}</div>
-    <div class="mt-8 md:mt-0 flex-1">Content</div>
-    <div class="hidden md:block md:w-60">
+    <div class="mt-8 md:mt-0 flex-1 space-y-10">
+        {% include 'forum/post.html' %}
+    </div>
+    <div class="hidden md:block md:w-60 ml-8 space-y-4">
         <div class="new-topic">
             <a href="#" class="bg-blue-500 text-white text-base px-4 py-2.5 rounded-md">Start a new Topic</a>
         </div>
+
+        {% include "forum/footer.html" %}
     </div>
 
 </div>
