@@ -6,11 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+         body {
+             font-family: 'Roboto', sans-serif;
+         }
+    </style>
 </head>
 <body>
 
 {% include 'forum/navbar.html' %}
-<div class="md:max-w-7xl md:mx-auto mx-2">
+<div class="md:max-w-7xl md:mx-auto mx-2 pt-4 md:pt-10">
     {% block content %}{% endblock %}
 </div>
 

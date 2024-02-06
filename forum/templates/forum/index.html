@@ -1,4 +1,17 @@
 {% extends 'forum/base.html' %}
 
-{% block title %} SupportNet {% endblock %}
-{% block content %} Hello Forum {% endblock %}
+{% block title %} Support - Where Every Reply Makes a Difference {% endblock %}
+{% block content %}
+
+<div class="content md:flex justify-between ">
+    <div class="content-menu md:w-60">{% include 'forum/submenu.html' %}</div>
+    <div class="mt-8 md:mt-0 flex-1">Content</div>
+    <div class="hidden md:block md:w-60">
+        <div class="new-topic">
+            <a href="#" class="bg-blue-500 text-white text-base px-4 py-2.5 rounded-md">Start a new Topic</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
