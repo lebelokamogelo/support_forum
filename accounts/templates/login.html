@@ -5,23 +5,16 @@
     <form class="max-w-md max-md:mx-auto w-full p-6" action="" method="POST">
         {% csrf_token %}
         <div class="mb-4">
-            <p class="text-xl text-center text-slate-700 font-bold">Create new account</p>
+            <p class="text-xl text-center text-slate-700 font-bold">Sign in to access account</p>
         </div>
 
         <div class="mb-10">
             <p class="error text-red-700">{{ error }}</p>
         </div>
-
         <div>
             <div class="relative flex items-center">
                 <input name="username" type="text"
                        class="w-full border px-4 py-4 rounded-md outline-none" placeholder="Username"/>
-            </div>
-        </div>
-        <div class="mt-6">
-            <div class="relative flex items-center">
-                <input name="email" type="text"
-                       class="w-full border px-4 py-4 rounded-md outline-none" placeholder="Email address"/>
             </div>
         </div>
         <div class="mt-6">
@@ -33,12 +26,12 @@
         <div class="mt-10">
             <button type='submit'
                     class="font-bold rounded-md w-full hover:bg-slate-50 border text-slate-600 px-4 py-3">
-                Sign up
+                Sign in
             </button>
         </div>
-        <p class="mt-10 text-center">Already have an account <a href="/login"
-                                                                class="text-blue-600 font-semibold hover:underline ml-1">Sign
-            in</a></p>
+        <p class="mt-10 text-center">Do not have an account <a href={% url 'create-account' %}
+                                                               class="text-blue-600 font-semibold hover:underline ml-1">Sign
+            up</a></p>
     </form>
 </div>
 {% endblock %}

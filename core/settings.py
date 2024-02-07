@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # installed apps
     'forum',
+    'accounts',
     'django.contrib.humanize'
 ]
 

@@ -29,9 +29,9 @@
 
             <div class="username cursor-pointer">
                 {% if request.user.is_authenticated %}
-                <p>{{ request.user }}</p>
+                <p>{{ request.user|lower }}</p>
                 {% else %}
-                <a href="/login">login</a>
+                <a href={% url 'login' %}>login</a>
                 {% endif %}
             </div>
 
