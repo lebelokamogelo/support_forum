@@ -5,13 +5,22 @@
 
 <div class="content md:flex justify-between ">
     <div class="content-menu md:w-60">{% include 'forum/submenu.html' %}</div>
+
     <div class="mt-8 md:mt-0 flex-1 space-y-10">
+        {% block index %}
         {% include 'forum/post.html' %}
+        {% endblock %}
     </div>
+
     <div class="hidden md:block md:w-60 ml-8 space-y-4">
-        <div class="new-topic">
-            <a href="#" class="bg-blue-500 text-white text-base px-4 py-2.5 rounded-md">Start a new Topic</a>
-        </div>
+        <a href="/create" class="bg-blue-500 text-white flex flex-1 justify-center items-center space-x-2 text-base px-4 py-2.5 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+            </svg>
+
+            <span>Start a new topic</span>
+        </a>
 
         {% include "forum/footer.html" %}
     </div>

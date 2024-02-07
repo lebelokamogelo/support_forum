@@ -5,7 +5,7 @@
         </div>
 
         <div class="seach-container hidden md:flex">
-            {% include 'forum/search.html' %}
+            {% include 'forum/search_form.html' %}
         </div>
 
         <div class="actions flex items-center space-x-2">
@@ -28,7 +28,11 @@
             </div>
 
             <div class="username cursor-pointer">
-                <p>Kamogelo</p>
+                {% if request.user.is_authenticated %}
+                <p>{{ request.user }}</p>
+                {% else %}
+                <a href="/">login</a>
+                {% endif %}
             </div>
 
         </div>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # installed apps
     'forum',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [

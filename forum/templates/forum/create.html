@@ -1,0 +1,25 @@
+{% extends 'forum/index.html' %}
+
+{% block index %}
+<div class="my-6 mx-auto max-w-xl">
+    <p class="text-lg font-bold">Create a post</p>
+
+    {% if success %}
+    <p class="success text-green-700 mt-1">{{ success }}</p>
+    {% else %}
+    <p class="error text-red-700 mt-1">{{ error }}</p>
+    {% endif %}
+    <form class="mt-8 space-y-4" method="POST" action="/create/">
+        {% csrf_token %}
+        <input type='text' placeholder='Title'
+               class="w-full rounded-sm py-3 border border-[1px] px-4 outline-none" name="title"/>
+        <textarea placeholder='Description' rows="6"
+                  class="w-full rounded-sm px-4 border border-[1px] pt-3 outline-none resize-none"
+                  name="description"></textarea>
+        <button type='submit'
+                class="font-bold rounded-2xl w-28 hover:bg-slate-50 border text-slate-600 px-4 py-1">
+            Create
+        </button>
+    </form>
+</div>
+{% endblock %}
