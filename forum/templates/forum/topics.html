@@ -1,0 +1,41 @@
+{% extends 'forum/index.html' %}
+
+{% block index %}
+
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-gray-700 border bg-gray-50">
+        <tr>
+            <th scope="col" class="px-6 py-3">
+                Topic
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Replies
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if topics %}
+        {% for topic in topics %}
+        <tr class="bg-white border text-slate-600">
+            <th scope="row" class="px-6 py-4 font-semibold">
+                <a href="{% url 'detail-topic' topic.uuid %}" class="hover:underline">{{ topic.title }}</a>
+            </th>
+            <td class="px-6 py-4">
+                {{ topic.reply_set.count }}
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr class="bg-white border text-slate-600">
+            <td class="px-6 py-4 text-base">
+                <p>No topics found.</p>
+
+            </td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

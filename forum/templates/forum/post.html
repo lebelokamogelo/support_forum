@@ -45,7 +45,7 @@
                 <p>{{ blog.created_at|naturaltime }}</p>
             </div>
 
-            <a href="#">
+            <a href="{% url 'detail-topic' blog.uuid %}">
                 <div class="replies flex items-center space-x-2 text-sm text-slate-500">
 
                     <div class="icons">
