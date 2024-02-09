@@ -12,10 +12,13 @@ def login_(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        next_url = request.GET.get('next')
 
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
+            if next_url:
+                return redirect(reverse(next_url.replace("/", "")))
             return redirect(reverse('home'))
         else:
             error = "Username or password is incorrect"
