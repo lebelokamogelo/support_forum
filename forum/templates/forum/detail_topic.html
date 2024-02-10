@@ -1,5 +1,55 @@
 {% extends 'forum/index.html' %}
+{% load humanize %}
 
 {% block index %}
-    {{ blog }}
+<div class="wrapper">
+    <div class="py-2">
+        <h1 class="font-bold text-xl text-gray-800">{{ blog.title }}</h1>
+        <div class="flex items-center space-x-2 mt-2 text-gray-600">
+            <p class="text-sm">By <a href="#" class="italic font-bold hover:underline">{{ blog.author }}</a> on
+                {{ blog.created_at|date:"F j, Y" }}</p>
+        </div>
+        <hr class="border-gray-400 my-4">
+        <div class="description text-gray-800">
+            <p>{{ blog.description }}</p>
+        </div>
+        <div class="flex items-center space-x-2 mt-3 bg-gray-50 px-3 py-2 rounded-full justify-between w-28">
+            {% include "forum/upvote.html" %}
+        </div>
+    </div>
+
+    <div class="comment mt-4">
+        <div class="form">
+            <form class="w-full" action="" method="POST">
+                {% csrf_token %}
+                <div>
+                    <div class="relative flex items-center border px-4 py-3 rounded-full">
+                        <input name="comment" type="text"
+                               class="w-full  outline-none" placeholder="Add a comment"/>
+
+                        <button type="submit" class="text-gray-500 font-bold hover:text-blue-500">Comment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="replies mt-4 space-y-5">
+            {% for comment in blog.reply_set.all %}
+            <div class="comment space-y-2">
+                <div class="flex items-center space-x-2">
+                    <a href="#" class="lowercase font-bold hover:underline">{{ comment.author }}</a>
+                    <p class="h-1 w-1 rounded-full bg-slate-500"></p>
+                    <span class="text-gray-600">{{ comment.created_at|naturaltime }}</span>
+                </div>
+                <p class="text-slate-800">{{ comment.content }}</p>
+                <div class="comment-upvote flex items-center space-x-1 mt-3 bg-gray-50 px-2 py-1 rounded-full justify-between w-24">
+                    {% include "forum/comment_upvote.html" %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
 {% endblock %}
