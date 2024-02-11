@@ -8,4 +8,6 @@ urlpatterns = [
     path('create/', views.create, name='create'),
     path('topics/', views.my_topics, name='topics'),
     path('topic/<str:uuid>/', views.detail_topic, name='detail-topic'),
+
+    path('contact/', views.contact_us, name='contact'),
 ]

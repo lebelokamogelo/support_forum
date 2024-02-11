@@ -2,46 +2,40 @@
 
 {% if blog %}
 {% for blog in blog%}
-<div class="wrapper flex justify-between items-center shadow-sm px-4 md:px-4 py-3 md:py-6 bg-white">
-    <div class="upvote flex flex-col items-center space-y-3">
-        {% include "forum/upvote.html" %}
+<div class="wrapper shadow-sm px-4 md:px-4 py-3 md:py-6 bg-white">
+    <div class="title font-bold text-lg text-slate-800 hover:underline">
+        <a href="{% url 'detail-topic' blog.uuid %}">{{ blog.title }}</a>
     </div>
-    <div class="right flex-1 ml-10 md:ml-14">
-        <div class="title font-bold text-lg text-slate-800 hover:underline">
-            <a href="{% url 'detail-topic' blog.uuid %}">{{ blog.title }}</a>
+    <div class="description text-slate-500 mt-2 text-base line-clamp-4">
+        <p>{{ blog.description }}</p>
+    </div>
+
+    <div class="bg-slate-300 mt-4 md:mt-6 w-full h-[1px]"></div>
+
+    <div class="footer flex items-center justify-between py-3">
+        <div class="posted-by text-sm">
+            <p class="text-slate-500">Posted by <span class="text-blue-500 font-bold hover:underline"><a href="#">{{ blog.author }}</a></span>
+            </p>
         </div>
-        <div class="description text-slate-500 mt-2 text-base line-clamp-4">
-            <p>{{ blog.description }}</p>
+
+        <div class="time text-sm text-slate-500">
+            <p>{{ blog.created_at|naturaltime }}</p>
         </div>
 
-        <div class="bg-slate-300 mt-4 md:mt-6 w-full h-[1px]"></div>
+        <a href="{% url 'detail-topic' blog.uuid %}">
+            <div class="replies flex items-center space-x-2 text-sm text-slate-500">
 
-        <div class="footer flex items-center justify-between py-3">
-            <div class="posted-by text-sm">
-                <p class="text-slate-500">Posted by <span class="text-blue-500 font-bold hover:underline"><a href="#">{{ blog.author }}</a></span>
-                </p>
-            </div>
+                <div class="icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/>
+                    </svg>
 
-            <div class="time text-sm text-slate-500">
-                <p>{{ blog.created_at|naturaltime }}</p>
-            </div>
-
-            <a href="{% url 'detail-topic' blog.uuid %}">
-                <div class="replies flex items-center space-x-2 text-sm text-slate-500">
-
-                    <div class="icons">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/>
-                        </svg>
-
-                    </div>
-                    <span class="font-bold">{{ blog.comment_set.count }}+</span>
                 </div>
-            </a>
-
-        </div>
+                <span class="font-bold">{{ blog.comment_set.count }}+</span>
+            </div>
+        </a>
     </div>
 </div>
 {% endfor%}

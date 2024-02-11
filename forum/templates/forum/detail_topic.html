@@ -13,9 +13,12 @@
         <div class="description text-gray-800">
             <p>{{ blog.description }}</p>
         </div>
-        <div class="flex items-center space-x-2 mt-3 bg-gray-50 px-3 py-2 rounded-full justify-between w-28">
-            {% include "forum/upvote.html" %}
-        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="flex items-center space-x-2 mt-3 bg-gray-50 px-3 py-2 rounded-full justify-between w-28">
+                {% include "forum/upvote.html" %}
+            </div>
+        </form>
     </div>
 
     <div class="comment mt-4">
@@ -37,9 +40,9 @@
             {% for comment in blog.comment_set.all %}
             <div class="comment space-y-2">
                 <div class="flex items-center space-x-2">
-                    <a href="#" class="lowercase font-bold hover:underline">{{ comment.author }}</a>
+                    <a href="#" class="lowercase text-[13px] font-bold hover:underline">{{ comment.author }}</a>
                     <p class="h-1 w-1 rounded-full bg-slate-500"></p>
-                    <span class="text-gray-600">{{ comment.created_at|naturaltime }}</span>
+                    <span class="text-gray-600 text-[12px]">{{ comment.created_at|naturaltime }}</span>
                 </div>
                 <p class="text-slate-800">{{ comment.content }}</p>
             </div>
