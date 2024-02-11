@@ -22,7 +22,7 @@ class Blog(models.Model):
         return self.title
 
 
-class Reply(models.Model):
+class Comment(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4,
                             editable=False)
     content = models.TextField()
@@ -34,7 +34,7 @@ class Reply(models.Model):
 
     class Meta:
         ordering = ["created_at"]
-        verbose_name_plural = "Replies"
+        verbose_name_plural = "Comments"
 
     def __str__(self):
         return self.content[:20]

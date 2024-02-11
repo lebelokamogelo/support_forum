@@ -22,7 +22,7 @@
                 <a href="{% url 'detail-topic' topic.uuid %}" class="hover:underline">{{ topic.title }}</a>
             </th>
             <td class="px-6 py-4">
-                {{ topic.reply_set.count }}
+                {{ topic.comment_set.count }}
             </td>
         </tr>
         {% endfor %}

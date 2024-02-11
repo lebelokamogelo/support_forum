@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 
-from .models import Blog
+from .models import Blog, Comment
 
 
 def index(request):
@@ -60,6 +60,13 @@ def my_topics(request):
 
 def detail_topic(request, uuid):
     blog = get_object_or_404(Blog, uuid=uuid)
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        try:
+            Comment.objects.create(content=content, blog=blog, author=request.user)
+        except Exception as e:
+            print("An error has occurred")
 
     context = {"blog": blog}
     return render(request, 'forum/detail_topic.html', context=context)
