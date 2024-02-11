@@ -42,9 +42,6 @@
                     <span class="text-gray-600">{{ comment.created_at|naturaltime }}</span>
                 </div>
                 <p class="text-slate-800">{{ comment.content }}</p>
-                <div class="comment-upvote flex items-center space-x-1 mt-3 bg-gray-50 px-2 py-1 rounded-full justify-between w-24">
-                    {% include "forum/comment_upvote.html" %}
-                </div>
             </div>
             {% endfor %}
         </div>

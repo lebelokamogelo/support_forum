@@ -26,7 +26,6 @@ class Reply(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4,
                             editable=False)
     content = models.TextField()
-    upvote = models.IntegerField(default=0)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.SET_NULL,
                                null=True, blank=True)
@@ -34,7 +33,7 @@ class Reply(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["upvote"]
+        ordering = ["created_at"]
         verbose_name_plural = "Replies"
 
     def __str__(self):
