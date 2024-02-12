@@ -45,6 +45,15 @@
                     <span class="text-gray-600 text-[12px]">{{ comment.created_at|naturaltime }}</span>
                 </div>
                 <p class="text-slate-800">{{ comment.content }}</p>
+                {% if request.user == comment.author %}
+                <form method="POST" action=''>
+                    {% csrf_token %}
+                    <input type="hidden" name="comment_id" value="{{ comment.uuid }}">
+                    <button type="submit" class="underline hover:text-red-500 text-gray-700">
+                        Delete
+                    </button>
+                </form>
+                {% endif %}
             </div>
             {% endfor %}
         </div>

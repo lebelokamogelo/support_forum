@@ -1,6 +1,6 @@
 <form class="" method="get" action="/search">
     <div class="relative text-gray-600">
-        <input type="search" name="q" placeholder="Search for Topics"
+        <input type="search" name="q" placeholder="Search for Topics" value="{{ request.GET.q }}"
                class="bg-slate-100 w-40 md:w-[320px] h-10 px-5 pr-10 rounded-md text-md focus:outline-none">
         <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
