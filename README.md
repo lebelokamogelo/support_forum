@@ -2,7 +2,7 @@
 
 Welcome to the Support Forum App, a Django-based web application designed to facilitate discussions, questions, and assistance among users. This platform aims to provide a seamless experience for both administrators and users to engage in meaningful conversations and find solutions to their queries.
 
-### Features
+#### Features
 
 - User Authentication
 - Forums and Threads
@@ -14,7 +14,7 @@ To get started with the Support Forum App, follow these simple installation step
 Clone the repository from GitHub:
 
 ```bash
-    git clone https://github.com/lebelokamogelo/support_forum.git
+git clone https://github.com/lebelokamogelo/support_forum.git
 ```
 
 Navigate to the project directory:
