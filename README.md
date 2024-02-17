@@ -8,6 +8,7 @@ Welcome to the Support Forum App, a Django-based web application designed to fac
 - Forums and Threads
 - Search Functionality
 - Installation
+- Docker
 
 To get started with the Support Forum App, follow these simple installation steps:
 
@@ -21,7 +22,7 @@ Navigate to the project directory:
 
 ```bash
 
-cd support-forum-app
+cd support_forum
 ```
 
 Create a virtual environment and activate it:
