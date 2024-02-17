@@ -2,14 +2,22 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.core.cache import cache
 
 from .models import Blog, Comment
 
 
 def index(request):
-    context = {
-        "blog": Blog.objects.all()
-    }
+    context = {}
+    cached_data = cache.get("data")
+
+    if cached_data:
+        context['blog'] = cached_data
+    else:
+        blog_data = Blog.objects.all()
+        context['blog'] = blog_data
+        cache.set('data', blog_data, timeout=3600)
+
     return render(request, 'forum/index.html', context=context)
 
 
