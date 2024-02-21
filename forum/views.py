@@ -81,14 +81,18 @@ def detail_topic(request, uuid):
         blog.save()
 
         if request.POST.get('comment_id'):
-            instance = get_object_or_404(Comment, uuid=request.POST.get('comment_id'), author=request.user)
+            instance = get_object_or_404(Comment,
+                                         uuid=request.POST.get('comment_id'),
+                                         author=request.user)
             instance.delete()
 
         if request.POST.get('content'):
             try:
-                Comment.objects.create(content=request.POST.get('content'), blog=blog, author=request.user)
+                Comment.objects.create(content=request.POST.get('content'),
+                                       blog=blog,
+                                       author=request.user)
             except Exception as e:
-                print("An error has occurred")
+                print("An error has occurred", e)
 
     if request.method == 'DELETE':
         print(request.GET.get('id'))
